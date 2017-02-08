@@ -1,0 +1,14 @@
+<odoo>
+
+    <record id="ir_cron_idea_action" model="ir.cron">
+        <field name="name">Idea Clase</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field eval="False" name="doall"/>
+        <field eval="'idea.base'" name="model"/>
+        <field eval="'idea_close'" name="function"/>
+    </record>
+
+</odoo>

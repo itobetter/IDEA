@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#    Change: promero ** 08/2015 **  **
+#    type of the change: created
+
+-->
+<odoo>
+    <data>
+                <!--menu principal -->
+
+        <menuitem name="Idea y votaciones" id="main_menu"/>
+
+
+
+    </data>
+</odoo>

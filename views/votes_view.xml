@@ -1,0 +1,73 @@
+<odoo>
+
+    <record id="votes_tree" model="ir.ui.view">
+        <field name="name">idea.score.tree</field>
+        <field name="model">idea.score</field>
+        <field name="arch" type="xml">
+            <tree string="Calificaciones">
+
+                <field name="score" string="puntuacion"/>
+                <field name="create_uid" string="Creado por"/>
+                <field name="create_date" string="Creado el"/>
+                <field name="write_uid" string="Modificado por"/>
+                <field name="write_date" string="Modificado el"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="votes_search" model="ir.ui.view">
+        <field name="name">idea.score.search</field>
+        <field name="model">idea.score</field>
+        <field name="arch" type="xml">
+            <search string="Calificaciones">
+                <field name="score"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+                <field name="write_uid"/>
+                <field name="write_date"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="votes_action" model="ir.actions.act_window">
+        <field name="name">Calificaciones</field>
+        <field name="res_model">idea.score</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="votes_search"/>
+
+    </record>
+
+    <menuitem id="score_menu" action="votes_action"
+              parent="main_menu" sequence="30" />
+
+
+    <record id="idea_graph" model="ir.ui.view">
+        <field name="name">Grafica de ideas</field>
+        <field name="model">idea.score</field>
+        <field name="arch" type="xml">
+            <graph type="line">
+                <field name="score"/>
+                <field name="idea_id"/>
+
+
+            </graph>
+        </field>
+    </record>
+
+    <record id="votes_graf_action" model="ir.actions.act_window">
+        <field name="name">Graficas</field>
+        <field name="res_model">idea.score</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="domain_force">['|',('create_uid','=', user.id),('idea_create_uid','=', user.id)]</field>
+        <field name="search_view_id" ref="votes_search"/>
+
+    </record>
+
+    <menuitem id="g_menu" action="votes_graf_action"
+              parent="main_menu" sequence="40" />
+
+</odoo>
